@@ -1,0 +1,64 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+
+# Build output
+dist
+dist-ssr
+*.local
+.output
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Testing
+/coverage
+.nyc_output
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Vite
+.vite
+
+# Vue
+.vue-ssr-*
+
+# Temporary files
+.temp
+.tmp
+.cache
+
+# Production specific files
+/dist
+
+# Generated files
+/public/hot
