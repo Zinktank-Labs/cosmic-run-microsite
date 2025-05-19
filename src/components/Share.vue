@@ -75,9 +75,10 @@
 <script setup>
 import { inject, ref } from "vue";
 import { useScrollAnimation } from '../composables/useScrollAnimation';
+import companyConfig from '../config/company';
 
 const t = inject("t");
-const url = "https://cosmicrun.zinktanklabs.com";
+const url = companyConfig.website.productUrl;
 const isCopied = ref(false);
 
 // Initialize scroll animations

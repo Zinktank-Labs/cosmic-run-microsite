@@ -9,71 +9,29 @@
  * - Analytics configuration
  */
 
+import companyConfig from './company';
+
 export default {
-  // Basic company information
-  company: {
-    name: 'Zinktank Labs',
-    legalForm: 'GbR', // Gesellschaft bürgerlichen Rechts
-    address: {
-      street: 'Zimmerstr. 38',
-      city: 'Hamburg',
-      zip: '22085',
-      country: 'Germany'
-    },
-    // Tax information (different from GmbH)
-    tax: {
-      vatId: null, // not applicable
-      taxNumber: '43/669/04633' // Local tax number (Steuernummer)
-    },
-    // GbR partners (all partners must be listed for a GbR)
-    partners: [
-      {
-        name: 'Edvin Granulo',
-        title: 'Co-Founder'
-      },
-      {
-        name: 'Deniz Kekeç', 
-        title: 'Co-Founder'
-      },
-      {
-        name: 'Christian Willner',
-        title: 'Co-Founder'
-      }
-    ],
-  },
+  // Use company configuration
+  company: companyConfig,
   
-  // Contact information
+  // Contact information - reference company config
   contact: {
-    email: 'contact@zinktanklabs.com',
-    privacyEmail: 'privacy@zinktanklabs.com',
+    get email() { return companyConfig.emails.contact; },
+    get privacyEmail() { return companyConfig.emails.privacy; },
     // Phone is optional - not legally required if email is provided
     phone: null // Set to null to hide phone number, or provide a number if desired
   },
   
-  // Theme settings
-  theme: {
-    accentColor: '#00ff84',
-    accentColorRgb: '0, 255, 132', // RGB values for rgba usage
-    accentColorDarker: '#00cc6a'
-  },
+  // Theme settings - reference company config
+  theme: companyConfig.theme,
   
-  // Social media profiles
-  social: {
-    bluesky: 'https://sky.app/profile/cosmicrungame.bsky.social',
-    twitter: 'https://x.com/cosmicrungame',
-    instagram: 'https://instagram.com/cosmicrungame/',
-    tiktok: 'https://tiktok.com/@cosmicrungame',
-    reddit: 'https://reddit.com/user/CosmicRunGame/'
-  },
+  // Social media profiles - reference company config
+  social: companyConfig.social,
   
-  // Website information
-  website: {
-    domain: 'cosmicrun.zinktanklabs.com',
-    fullUrl: 'https://cosmicrun.zinktanklabs.com'
-  },
+  // Website information - reference company config
+  website: companyConfig.website,
   
-  // Analytics
-  analytics: {
-    googleAnalyticsId: 'G-355558690'
-  }
+  // Analytics - reference company config
+  analytics: companyConfig.analytics
 };

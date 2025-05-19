@@ -71,8 +71,20 @@ export default {
   
   // Website information
   website: {
-    domain: 'cosmicrun.zinktanklabs.com',
-    fullUrl: 'https://cosmicrun.zinktanklabs.com'
+    companyDomain: 'zinktanklabs.com',
+    productDomain: 'cosmicrun.zinktanklabs.com',
+    protocol: 'https',
+    get companyUrl() { return `${this.protocol}://${this.companyDomain}`; },
+    get productUrl() { return `${this.protocol}://${this.productDomain}`; },
+    get fullUrl() { return this.productUrl; }
+  },
+  
+  // Company Emails (derived from domain)
+  get emails() {
+    return {
+      contact: `contact@${this.website.companyDomain}`,
+      privacy: `privacy@${this.website.companyDomain}`,
+    };
   },
   
   // Analytics
