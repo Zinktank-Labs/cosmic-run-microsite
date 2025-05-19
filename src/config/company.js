@@ -15,7 +15,7 @@
 export default {
   // Basic company information
   name: 'Zinktank Labs',
-  legalForm: 'GbR', // Gesellschaft bürgerlichen Rechts
+  legalForm: '', // Removed GbR designation
   address: {
     street: 'Zimmerstr. 38',
     city: 'Hamburg',

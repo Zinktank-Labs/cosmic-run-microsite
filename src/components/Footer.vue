@@ -48,7 +48,7 @@
         </button>
       </div>
       
-      <p>© {{ currentYear }} {{ appConfig.company.name }} {{ appConfig.company.legalForm }} – Cosmic Run</p>
+      <p>© {{ currentYear }} {{ appConfig.company.name }} – Cosmic Run</p>
       
       <!-- Impressum Modal -->
       <div v-if="showImpressum" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4" @click.self="showImpressum = false">
@@ -64,7 +64,7 @@
           
           <div class="text-left space-y-4">
             <!-- Company Name and Address (Legally required) -->
-            <h3 class="text-lg text-lime-400">{{ appConfig.company.name }} {{ appConfig.company.legalForm }}</h3>
+            <h3 class="text-lg text-lime-400">{{ appConfig.company.name }}</h3>
             <p>{{ appConfig.company.address.street }}<br>{{ appConfig.company.address.zip }} {{ appConfig.company.address.city }}<br>{{ appConfig.company.address.country }}</p>
             
             <!-- GbR Partners (All partners must be listed for a GbR) -->
