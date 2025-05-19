@@ -31,8 +31,9 @@
           :aria-hidden="currentSlide !== index"
         >
           <div 
-            class="overflow-hidden rounded-lg border-2 border-accent transform transition-all duration-500"
+            class="overflow-hidden rounded-lg border-2 border-accent transform transition-all duration-500 cursor-pointer"
             :class="{'scale-105': currentSlide === index}"
+            @click="openLightbox(index)"
           >
             <img 
               :src="image.src" 
@@ -91,11 +92,68 @@
         {{ currentSlide + 1 }} of {{ images.length }}
       </div>
     </div>
+    
+    <!-- Teleport the lightbox directly to document body -->
+    <Teleport to="body">
+      <div 
+        v-if="lightboxActive" 
+        class="lightbox-overlay"
+        @click="closeLightbox"
+      >
+        <!-- Full-viewport lightbox container -->
+        <div class="lightbox-container">
+          <!-- Close button -->
+          <button 
+            @click="closeLightbox" 
+            class="lightbox-close"
+            aria-label="Close image lightbox"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+
+          <!-- Image container -->
+          <div class="lightbox-image-container" @click.stop>
+            <img 
+              :src="activeLightboxImage?.src" 
+              :alt="activeLightboxImage?.alt" 
+              class="lightbox-image"
+            />
+          </div>
+          
+          <!-- Caption -->
+          <div 
+            v-if="activeLightboxImage?.description" 
+            class="lightbox-caption"
+          >
+            <p>{{ activeLightboxImage.description }}</p>
+          </div>
+
+          <!-- Navigation arrows -->
+          <button 
+            @click.stop="prevLightboxImage" 
+            class="lightbox-nav lightbox-prev"
+            aria-label="Previous image"
+          >
+            <span aria-hidden="true">❮</span>
+          </button>
+          
+          <button 
+            @click.stop="nextLightboxImage" 
+            class="lightbox-nav lightbox-next"
+            aria-label="Next image"
+          >
+            <span aria-hidden="true">❯</span>
+          </button>
+        </div>
+      </div>
+    </Teleport>
   </div>
 </template>
 
 <script setup>
-import { ref, inject, watch, computed, onMounted } from 'vue';
+import { ref, inject, watch, computed, onMounted, onUnmounted, Teleport } from 'vue';
 import { useScrollAnimation } from '../composables/useScrollAnimation';
 
 const t = inject('t');
@@ -106,6 +164,11 @@ const isDragging = ref(false);
 const startX = ref(0);
 const currentX = ref(0);
 const carouselTrack = ref(null);
+
+// Lightbox state
+const lightboxActive = ref(false);
+const lightboxIndex = ref(0);
+const activeLightboxImage = computed(() => lightboxIndex.value >= 0 ? images.value[lightboxIndex.value] : null);
 
 // Initialize scroll animations
 useScrollAnimation();
@@ -143,6 +206,52 @@ function prevSlide() {
 
 function goToSlide(index) {
   currentSlide.value = index;
+}
+
+// Lightbox functions
+function openLightbox(index) {
+  // Prevent opening lightbox if dragging
+  if (isDragging.value) return;
+  
+  lightboxIndex.value = index;
+  lightboxActive.value = true;
+  stopAutoplay();
+  
+  // Prevent body scrolling when lightbox is open
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  lightboxActive.value = false;
+  startAutoplay();
+  
+  // Restore body scrolling
+  document.body.style.overflow = '';
+}
+
+function nextLightboxImage() {
+  lightboxIndex.value = (lightboxIndex.value + 1) % totalSlides;
+}
+
+function prevLightboxImage() {
+  lightboxIndex.value = (lightboxIndex.value - 1 + totalSlides) % totalSlides;
+}
+
+// Handle keyboard navigation for lightbox
+function handleKeyDown(event) {
+  if (!lightboxActive.value) return;
+  
+  switch(event.key) {
+    case 'Escape':
+      closeLightbox();
+      break;
+    case 'ArrowRight':
+      nextLightboxImage();
+      break;
+    case 'ArrowLeft':
+      prevLightboxImage();
+      break;
+  }
 }
 
 // Drag handling for touch and mouse
@@ -220,6 +329,14 @@ onMounted(() => {
     container.addEventListener('mouseenter', stopAutoplay);
     container.addEventListener('mouseleave', startAutoplay);
   }
+  
+  // Add keyboard event listener for lightbox navigation
+  window.addEventListener('keydown', handleKeyDown);
+});
+
+onUnmounted(() => {
+  stopAutoplay();
+  window.removeEventListener('keydown', handleKeyDown);
 });
 
 // Reset to first slide when language changes
@@ -284,5 +401,132 @@ button:active {
 
 .carousel-indicator.w-4 {
   width: 1rem; /* 4 tailwind units */
+}
+
+/* Lightbox animation */
+@keyframes lightbox-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.lightbox-container {
+  animation: lightbox-in 0.3s ease-out forwards;
+  box-shadow: 0 0 30px rgba(var(--accent-color-rgb), 0.3);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.lightbox-image {
+  max-width: 95vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border: 2px solid var(--accent-color);
+  border-radius: 4px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Visible cursor for clickable images */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* Add subtle hover effect to indicate images are clickable */
+.carousel-container .cursor-pointer:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(var(--accent-color-rgb), 0.5);
+}
+
+/* Lightbox specific styles */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #000;
+  border: none;
+  border-radius: 9999px;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  z-index: 60;
+}
+
+.lightbox-close:hover {
+  background-color: rgba(255, 255, 255, 1);
+}
+
+.lightbox-image-container {
+  width: 100vw;
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.125rem;
+  z-index: 60;
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #000;
+  border: none;
+  border-radius: 9999px;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  z-index: 60;
+}
+
+.lightbox-prev {
+  left: 1rem;
+}
+
+.lightbox-next {
+  right: 1rem;
+}
+
+.lightbox-nav:hover {
+  background-color: rgba(255, 255, 255, 1);
 }
 </style>
