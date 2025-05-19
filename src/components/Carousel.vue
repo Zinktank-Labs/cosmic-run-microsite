@@ -1,6 +1,6 @@
 <template>
   <div class="overflow-hidden w-full pt-12" data-animate>
-    <h2 class="text-3xl font-orbitron text-lime-400 mb-6">{{ t.galleryTitle }}</h2>
+    <h2 class="text-3xl font-orbitron text-accent mb-6">{{ t.galleryTitle }}</h2>
     
     <!-- Modern carousel with touch support and improved accessibility -->
     <div 
@@ -31,7 +31,7 @@
           :aria-hidden="currentSlide !== index"
         >
           <div 
-            class="overflow-hidden rounded-lg border-2 border-pink-600 transform transition-all duration-500"
+            class="overflow-hidden rounded-lg border-2 border-accent transform transition-all duration-500"
             :class="{'scale-105': currentSlide === index}"
           >
             <img 
@@ -76,7 +76,7 @@
           class="carousel-indicator h-1.5 transition-all duration-300 rounded-sm"
           :class=" [
             currentSlide === index 
-              ? 'bg-pink-600 w-8' 
+              ? 'bg-accent w-8' 
               : 'bg-gray-400 hover:bg-gray-300 w-4'
           ]"
           role="tab"

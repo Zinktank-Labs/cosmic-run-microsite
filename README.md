@@ -60,7 +60,7 @@ After building the project, upload the entire `dist` folder to your web server:
 ### Pre-Production Checklist
 - [ ] **Replace Steam Wishlist Placeholder**: Update the "#" link in CtaSection.vue with the actual Steam store URL
 - [x] **Update Google Analytics ID**: Updated with ID "G-355558690" in index.html
-- [ ] **Add Favicon**: Need to create and add favicon icons
+- [x] **Add Favicon**: Need to create and add favicon icons
 - [x] **Organize Images**: Moved optimized images to main imgh folder and removed duplicates
 - [x] **Remove Console Logs**: Console logs in scripts/optimize-images.js can remain as they only run during development
 - [x] **Minify Assets**: Will be handled automatically by Vite's production build
