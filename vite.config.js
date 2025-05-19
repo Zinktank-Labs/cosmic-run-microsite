@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import { splitVendorChunkPlugin } from 'vite'
 import viteCompression from 'vite-plugin-compression'
 import viteImagemin from 'vite-plugin-imagemin'
 import { visualizer } from 'rollup-plugin-visualizer'
@@ -13,7 +12,6 @@ export default defineConfig(({ command, mode }) => {
   return {
     plugins: [
       vue(),
-      splitVendorChunkPlugin(),
       
       // Enable Gzip compression in production
       isProduction && viteCompression({
@@ -21,8 +19,13 @@ export default defineConfig(({ command, mode }) => {
         ext: '.gz',
       }),
       
-      // Image minification in production
+      // Re-enabled image minification with proper filtering for image files only
       isProduction && viteImagemin({
+        // Only process actual image files
+        filter: (file) => {
+          // Only process files that match image extensions
+          return /\.(jpe?g|png|gif|svg|webp)$/i.test(file);
+        },
         gifsicle: {
           optimizationLevel: 7,
           interlaced: false,
@@ -62,30 +65,27 @@ export default defineConfig(({ command, mode }) => {
       }),
     ].filter(Boolean),
     
-    // Use relative paths for FTP webspace
-    base: './',
+    // Keep using absolute paths for better compatibility
+    base: '/',
       
     build: {
       // Output directory
       outDir: 'dist',
       
-      // Enable minification
-      minify: 'terser',
-      
-      // Terser options for smaller output
-      terserOptions: {
-        compress: {
-          drop_console: true, // Remove console statements
-          drop_debugger: true,
-        },
-      },
+      // Enable minification but use esbuild which is more reliable than terser
+      minify: 'esbuild',
       
       // Optimize chunk size
       rollupOptions: {
         output: {
-          manualChunks: {
-            'vue': ['vue'],
-            'i18n': [
+          // Convert object form to function form of manualChunks
+          manualChunks: (id) => {
+            if (id.includes('node_modules/vue')) {
+              return 'vue';
+            }
+            
+            // Group i18n files together
+            const i18nFiles = [
               './src/i18n/index.js',
               './src/i18n/en.js',
               './src/i18n/de.js',
@@ -93,24 +93,33 @@ export default defineConfig(({ command, mode }) => {
               './src/i18n/ja.js',
               './src/i18n/ko.js',
               './src/i18n/pt.js',
-            ]
+            ];
+            
+            if (i18nFiles.some(file => id.includes(file))) {
+              return 'i18n';
+            }
+            
+            // Default vendor splitting
+            if (id.includes('node_modules')) {
+              return 'vendor';
+            }
           },
           // Modify chunk naming for better organization
           chunkFileNames: 'js/[name]-[hash].js',
           entryFileNames: 'js/[name]-[hash].js',
           assetFileNames: (assetInfo) => {
-            const info = assetInfo.name.split('.')
-            const ext = info.pop()
+            if (!assetInfo.name) return 'assets/[name]-[hash][extname]';
+            
             if (/\.(png|jpe?g|gif|svg|webp|ico)$/.test(assetInfo.name)) {
-              return `img/[name]-[hash][extname]`
+              return `img/[name]-[hash][extname]`;
             }
             if (/\.(css)$/.test(assetInfo.name)) {
-              return `css/[name]-[hash][extname]`
+              return `css/[name]-[hash][extname]`;
             }
             if (/\.(woff|woff2|eot|ttf|otf)$/.test(assetInfo.name)) {
-              return `fonts/[name]-[hash][extname]`
+              return `fonts/[name]-[hash][extname]`;
             }
-            return `assets/[name]-[hash][extname]`
+            return `assets/[name]-[hash][extname]`;
           }
         }
       },

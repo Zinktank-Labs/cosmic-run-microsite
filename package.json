@@ -1,11 +1,14 @@
 {
   "name": "cosmic-run-modern-vue",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "optimize-images": "node scripts/optimize-images.js",
+    "build": "npm run optimize-images && vite build && node scripts/copy-404.js",
     "preview": "vite preview",
-    "analyze": "vite build --mode analyze"
+    "analyze": "vite build --mode analyze",
+    "copy-404": "node scripts/copy-404.js"
   },
   "dependencies": {
     "vue": "^3.4.0"

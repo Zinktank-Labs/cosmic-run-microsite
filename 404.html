@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Cosmic Run</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="404 - Page Not Found | Cosmic Run">
+    <meta property="og:description" content="The page you're looking for has drifted into deep space.">
+    <meta property="og:image" content="/imgh/logo_cosmicrun.png">
+    
+    <!-- Inline styles to ensure the page works without external CSS -->
+    <style>
+        :root {
+            --accent-color: #00ff84;
+            --accent-color-rgb: 0, 255, 132;
+            --accent-color-darker: #00cc6a;
+        }
+        
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: monospace, 'Courier New', Courier;
+            overflow-x: hidden;
+        }
+        
+        .star-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 200vh;
+            z-index: 0;
+            background: #000 url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzAwMCIvPjxjaXJjbGUgY3g9IjEwIiBjeT0iMTAiIHI9IjEiIGZpbGw9IiNmZmYiIG9wYWNpdHk9IjAuMyIvPjxjaXJjbGUgY3g9IjMwIiBjeT0iMzAiIHI9IjAuNSIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC41Ii8+PGNpcmNsZSBjeD0iNDUiIGN5PSI1NSIgcj0iMSIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC43Ii8+PGNpcmNsZSBjeD0iNjAiIGN5PSIxNSIgcj0iMC43NSIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC40Ii8+PGNpcmNsZSBjeD0iOTAiIGN5PSI0MCIgcj0iMC40IiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjYiLz48Y2lyY2xlIGN4PSIxMzAiIGN5PSI4MCIgcj0iMSIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC41Ii8+PGNpcmNsZSBjeD0iMTgwIiBjeT0iNjAiIHI9IjAuOCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC43Ii8+PGNpcmNsZSBjeD0iMTcwIiBjeT0iMTUwIiByPSIwLjkiIGZpbGw9IiNmZmYiIG9wYWNpdHk9IjAuNCIvPjxjaXJjbGUgY3g9IjE1MCIgY3k9IjE4MCIgcj0iMC42IiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjMiLz48Y2lyY2xlIGN4PSIxMDAiIGN5PSIxNzAiIHI9IjEiIGZpbGw9IiNmZmYiIG9wYWNpdHk9IjAuNSIvPjxjaXJjbGUgY3g9IjQwIiBjeT0iMTkwIiByPSIwLjciIGZpbGw9IiNmZmYiIG9wYWNpdHk9IjAuNCIvPjxjaXJjbGUgY3g9IjIwIiBjeT0iMTAwIiByPSIwLjUiIGZpbGw9IiNmZmYiIG9wYWNpdHk9IjAuNiIvPjxjaXJjbGUgY3g9IjExMCIgY3k9IjEyMCIgcj0iMC44IiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjciLz48Y2lyY2xlIGN4PSIxOTAiIGN5PSIxMCIgcj0iMC42IiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjMiLz48Y2lyY2xlIGN4PSI3MCIgY3k9IjgwIiByPSIxIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjUiLz48Y2lyY2xlIGN4PSIxNDAiIGN5PSIzMCIgcj0iMC43IiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjQiLz48Y2lyY2xlIGN4PSI2MCIgY3k9IjEyMCIgcj0iMC42IiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjQiLz48Y2lyY2xlIGN4PSIxNzAiIGN5PSIxMDAiIHI9IjAuNCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC42Ii8+PGNpcmNsZSBjeD0iODAiIGN5PSIxNTAiIHI9IjAuOSIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC43Ii8+') center/cover;
+            animation: twinkling 100s linear infinite;
+            pointer-events: none;
+        }
+        
+        .container {
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .content {
+            max-width: 600px;
+            padding: 2rem;
+            background: rgba(5, 5, 15, 0.95);
+            border: 1px solid #1a1a1a;
+            border-radius: 0.5rem;
+            text-align: center;
+            backdrop-filter: blur(2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8), 0 0 10px rgba(var(--accent-color-rgb), 0.1);
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .content::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            background: linear-gradient(45deg, rgba(var(--accent-color-rgb), 0.03), transparent 30%, rgba(var(--accent-color-rgb), 0.03), transparent 70%, rgba(var(--accent-color-rgb), 0.03));
+            z-index: -1;
+            border-radius: inherit;
+            pointer-events: none;
+        }
+        
+        .error-code {
+            font-size: 7rem;
+            color: var(--accent-color);
+            margin: 0;
+            line-height: 1;
+            text-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.5);
+            animation: pulse 4s infinite alternate;
+        }
+        
+        .error-message {
+            font-size: 1.5rem;
+            margin: 1rem 0 2rem;
+        }
+        
+        .astronaut {
+            width: 150px;
+            height: 150px;
+            margin: 1rem auto;
+            position: relative;
+        }
+        
+        .astronaut svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 8px rgba(var(--accent-color-rgb), 0.3));
+        }
+        
+        .home-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: #000;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .home-button:hover, .home-button:focus {
+            background: var(--accent-color-darker);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        @keyframes twinkling {
+            from { background-position: 0 0; }
+            to { background-position: 1000px 1000px; }
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        .footer {
+            margin-top: 2rem;
+            font-size: 0.85rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .error-code {
+                font-size: 5rem;
+            }
+            
+            .error-message {
+                font-size: 1.2rem;
+            }
+            
+            .astronaut {
+                width: 120px;
+                height: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="star-background" aria-hidden="true"></div>
+    
+    <div class="container">
+        <div class="content">
+            <div class="astronaut floating">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                    <!-- Stylized astronaut SVG -->
+                    <g fill="none" stroke="#fff" stroke-width="2">
+                        <!-- Helmet -->
+                        <circle cx="128" cy="96" r="60" fill="#000" />
+                        <circle cx="128" cy="96" r="50" fill="#050505" />
+                        <ellipse cx="128" cy="96" rx="30" ry="40" fill="#151520" />
+                        <!-- Visor reflection -->
+                        <path d="M110,80 Q128,100 146,80" stroke="#00ff84" stroke-width="3" />
+                        <!-- Body -->
+                        <rect x="98" y="156" width="60" height="80" rx="30" ry="30" fill="#111" />
+                        <!-- Backpack -->
+                        <rect x="118" y="166" width="20" height="40" rx="5" ry="5" fill="#222" />
+                        <!-- Arms -->
+                        <path d="M98,166 Q78,186 68,176" stroke="#222" stroke-width="10" stroke-linecap="round" />
+                        <path d="M158,166 Q178,186 188,176" stroke="#222" stroke-width="10" stroke-linecap="round" />
+                        <!-- Legs -->
+                        <path d="M108,236 L108,256" stroke="#222" stroke-width="10" stroke-linecap="round" />
+                        <path d="M148,236 L148,256" stroke="#222" stroke-width="10" stroke-linecap="round" />
+                        <!-- Stars in background -->
+                        <circle cx="50" cy="40" r="2" fill="#fff" />
+                        <circle cx="200" cy="30" r="3" fill="#fff" />
+                        <circle cx="180" cy="150" r="2" fill="#fff" />
+                        <circle cx="30" cy="180" r="3" fill="#fff" />
+                    </g>
+                </svg>
+            </div>
+            
+            <h1 class="error-code">404</h1>
+            <p class="error-message">Houston, we have a problem! This page has drifted into deep space.</p>
+            
+            <a href="/" class="home-button">Return to Mission Control</a>
+            
+            <div class="footer">
+                &copy; 2025 Zinktank Labs GbR | Cosmic Run
+            </div>
+        </div>
+    </div>
+    
+    <!-- Simple script for parallax effect -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            window.addEventListener('scroll', function() {
+                const scrollY = window.scrollY || window.pageYOffset;
+                const starBackground = document.querySelector('.star-background');
+                if (starBackground) {
+                    starBackground.style.transform = `translateY(${scrollY * -0.05}px)`;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
