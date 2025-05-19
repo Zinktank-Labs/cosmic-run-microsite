@@ -2,13 +2,13 @@
   <div class="text-center mt-10" data-animate>
     <div class="relative inline-block">
       <!-- Pulsing background effect -->
-      <div class="absolute inset-0 rounded-lg bg-pink-600 blur-xl opacity-30 animate-pulse" aria-hidden="true"></div>
+      <div class="absolute inset-0 rounded-lg bg-accent blur-xl opacity-30 animate-pulse" aria-hidden="true"></div>
       
       <!-- Main CTA button with hover effect -->
       <a
         href="#"
         target="_blank"
-        class="cta-button relative inline-block px-8 py-4 bg-gradient-to-r from-pink-600 to-pink-500 text-white font-bold rounded-lg shadow-lg overflow-hidden"
+        class="cta-button relative inline-block px-8 py-4 bg-gradient-to-r from-accent to-accent-darker text-white font-bold rounded-lg shadow-lg overflow-hidden"
         aria-label="Add to your Steam wishlist"
         rel="noopener noreferrer"
       >
@@ -44,9 +44,10 @@ useScrollAnimation();
 }
 
 .cta-button:hover {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 4px 12px rgba(236, 72, 153, 0.4);
-  background-image: linear-gradient(to right, #d53f8c, #c5307d); /* from-pink-500 to-pink-400 */
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 4px 15px rgba(var(--accent-color-rgb), 0.25), 0 0 5px rgba(var(--accent-color-rgb), 0.1);
+  border-color: rgba(var(--accent-color-rgb), 0.8);
+  background-image: linear-gradient(to right, rgba(var(--accent-color-rgb), 0.85), rgba(var(--accent-color-rgb), 0.7));
 }
 
 .cta-button::before {
@@ -70,7 +71,7 @@ useScrollAnimation();
 .cta-button:focus-visible {
   outline: 3px solid rgba(255, 255, 255, 0.6);
   outline-offset: 2px;
-  box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.4);
+  box-shadow: 0 0 0 4px rgba(var(--accent-color-rgb), 0.4);
 }
 
 /* Custom animation for the CTA button */

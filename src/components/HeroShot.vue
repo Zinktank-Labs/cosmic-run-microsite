@@ -11,9 +11,9 @@
         <!-- Gradient overlay to fade the edges to black -->
         <div class="absolute inset-0 bg-gradient-radial pointer-events-none rounded-lg"></div>
         
-        <!-- Content centered in hero -->
+        <!-- Content centered in hero with accent color glow -->
         <div class="absolute inset-0 flex items-center justify-center z-10">
-          <h1 class="text-3xl md:text-4xl lg:text-5xl font-orbitron text-white text-center px-4" data-animate>
+          <h1 class="text-3xl md:text-4xl lg:text-5xl font-orbitron text-white text-center px-4 hero-title" data-animate>
             {{ t.heroTitle }}
           </h1>
         </div>
@@ -43,12 +43,19 @@
   
   <style scoped>
   /* Radial gradient for fading edges */
-.bg-gradient-radial {
-  background: radial-gradient(
-    circle at center,
-    transparent 30%,
-    rgba(0, 0, 0, 0.7) 70%,
-    rgba(0, 0, 0, 1) 100%
-  );
-}
+  .bg-gradient-radial {
+    background: radial-gradient(
+      circle at center,
+      transparent 30%,
+      rgba(0, 0, 0, 0.7) 70%,
+      rgba(0, 0, 0, 1) 100%
+    );
+  }
+
+  /* Add subtle glow effect for the hero title */
+  .hero-title {
+    text-shadow: 0 0 10px rgba(var(--accent-color-rgb), 0.5),
+                0 0 20px rgba(var(--accent-color-rgb), 0.3),
+                0 0 30px rgba(var(--accent-color-rgb), 0.1);
+  }
   </style>

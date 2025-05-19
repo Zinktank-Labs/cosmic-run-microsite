@@ -25,8 +25,8 @@
   overflow: visible;
   clip: auto;
   white-space: normal;
-  background-color: #d53f8c;
-  color: white;
+  background-color: var(--accent-color);
+  color: black;
   font-weight: bold;
   z-index: 9999;
   border-radius: 0.375rem;
@@ -35,7 +35,7 @@
 
 /* Focus styles for keyboard users */
 *:focus-visible {
-  outline: 2px solid #e879f9 !important;
+  outline: 2px solid var(--accent-color) !important;
   outline-offset: 3px;
 }
 

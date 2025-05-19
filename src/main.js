@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import './assets/theme.css'
 import './assets/tailwind.css'
 import './assets/browser-compatibility.css'
 import './assets/animations.css'

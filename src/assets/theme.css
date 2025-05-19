@@ -1,0 +1,26 @@
+/* Theme Colors */
+:root {
+  --accent-color: #00ff84;
+  --accent-color-darker: #00cc6a;
+  --accent-color-rgb: 0, 255, 132;
+  
+  /* Define other theme colors here */
+  --text-primary: #ffffff;
+  --bg-dark: #000000;
+  
+  /* Define gradients */
+  --accent-gradient: linear-gradient(to right, var(--accent-color), var(--accent-color-darker));
+}
+
+/* Utility classes for the accent color */
+.text-accent {
+  color: var(--accent-color) !important;
+}
+
+.bg-accent {
+  background-color: var(--accent-color) !important;
+}
+
+.border-accent {
+  border-color: var(--accent-color) !important;
+}

@@ -1,6 +1,6 @@
 <template>
     <div class="mt-10">
-      <h2 class="font-semibold text-lg text-pink-500 mb-2">
+      <h2 class="font-semibold text-lg text-accent mb-2">
         {{ t.aboutStudio }}
       </h2>
   

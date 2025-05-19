@@ -31,6 +31,13 @@ export default {
     phone: null // Set to null to hide phone number, or provide a number if desired
   },
   
+  // Theme settings
+  theme: {
+    accentColor: '#00ff84',
+    accentColorRgb: '0, 255, 132', // RGB values for rgba usage
+    accentColorDarker: '#00cc6a'
+  },
+  
   // GbR partners (all partners must be listed for a GbR)
   partners: [
     {

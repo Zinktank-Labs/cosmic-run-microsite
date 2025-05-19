@@ -1,6 +1,6 @@
 <template>
   <div class="text-center space-y-4 mt-12" data-animate>
-    <h1 class="text-4xl text-lime-400 font-orbitron">
+    <h1 class="text-4xl text-accent font-orbitron">
 {{ t.comingSoon }}      
     </h1>
 
@@ -105,22 +105,22 @@ function copyLink() {
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 1rem;
-  border-radius: 0.5rem; /* Or 9999px for pill shape like footer */
+  border-radius: 0.5rem;
   background-color: rgba(55, 55, 55, 0.7);
   color: white;
   font-size: 0.875rem;
   transition: all 0.3s ease;
-  border: 1px solid rgba(236, 72, 153, 0.5);
+  border: 1px solid rgba(var(--accent-color-rgb), 0.5);
   opacity: 1;
-  position: relative; /* For pseudo-element positioning */
-  overflow: hidden; /* To contain the pseudo-element */
+  position: relative;
+  overflow: hidden;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .social-button:hover {
-  background-color: rgba(236, 72, 153, 0.5);
+  background-color: rgba(var(--accent-color-rgb), 0.3);
   transform: translateY(-2px);
-  border-color: rgba(236, 72, 153, 1);
+  border-color: var(--accent-color);
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
 }
 
@@ -134,7 +134,7 @@ function copyLink() {
   background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transform: translateX(-100%);
   transition: transform 0.6s ease;
-  z-index: 0; /* Ensure it's behind the content */
+  z-index: 0;
 }
 
 .social-button:hover::before {

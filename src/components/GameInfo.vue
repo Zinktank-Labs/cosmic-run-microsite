@@ -1,6 +1,6 @@
 <template>
   <section class="pb-12 mt-16" data-animate>
-    <h2 class="text-3xl font-orbitron text-lime-400 mb-6">{{ t.aboutGame || t.aboutTitle }}</h2>
+    <h2 class="text-3xl font-orbitron text-accent mb-6">{{ t.aboutGame || t.aboutTitle }}</h2>
     
     <!-- Feature cards with hover effects -->
     <div class="grid grid-cols-1 gap-6">
@@ -16,7 +16,7 @@
           data-parallax
           data-depth="0.05"
         >
-          <h3 class="font-orbitron text-xl mb-3 text-pink-500">Fast-Paced Action</h3>
+          <h3 class="font-orbitron text-xl mb-3 text-accent">Fast-Paced Action</h3>
           <p class="text-white">{{ t.gameDesc2 }}</p>
         </div>
         <div 
@@ -24,7 +24,7 @@
           data-parallax
           data-depth="0.05"
         >
-          <h3 class="font-orbitron text-xl mb-3 text-pink-500">Narrative Depth</h3>
+          <h3 class="font-orbitron text-xl mb-3 text-accent">Narrative Depth</h3>
           <p class="text-white">{{ t.gameDesc3 }}</p>
         </div>
       </div>

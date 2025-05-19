@@ -76,7 +76,7 @@ function showPrivacyPolicy() {
   padding: 1rem;
   z-index: 100;
   box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
-  border-top: 1px solid rgba(236, 72, 153, 0.5);
+  border-top: 1px solid rgba(var(--accent-color-rgb), 0.5);
   backdrop-filter: blur(8px);
   animation: slide-up 0.5s ease-out;
 }
@@ -112,8 +112,8 @@ function showPrivacyPolicy() {
 }
 
 .accept-button {
-  background-color: rgba(236, 72, 153, 0.8);
-  color: white;
+  background-color: rgba(var(--accent-color-rgb), 0.8);
+  color: black;
   padding: 0.5rem 1.5rem;
   border-radius: 0.375rem;
   font-weight: 600;
@@ -121,7 +121,7 @@ function showPrivacyPolicy() {
 }
 
 .accept-button:hover {
-  background-color: rgba(236, 72, 153, 1);
+  background-color: var(--accent-color);
   transform: translateY(-2px);
 }
 
@@ -140,7 +140,7 @@ function showPrivacyPolicy() {
 }
 
 .policy-link {
-  color: rgba(236, 72, 153, 0.8);
+  color: rgba(var(--accent-color-rgb), 0.8);
   text-decoration: underline;
   background: none;
   border: none;
@@ -151,7 +151,7 @@ function showPrivacyPolicy() {
 }
 
 .policy-link:hover {
-  color: rgba(236, 72, 153, 1);
+  color: var(--accent-color);
 }
 
 @keyframes slide-up {
