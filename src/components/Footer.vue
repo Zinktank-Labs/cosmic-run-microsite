@@ -40,10 +40,10 @@
       
       <!-- Legal Links -->
       <div class="legal-links mb-3 flex justify-center gap-4 items-center">
-        <button @click="showImpressum = true" class="legal-link">
+        <button @click="openModal('impressum')" class="legal-link">
           {{ t.impressum }}
         </button>
-        <button @click="showPrivacyPolicy = true" class="legal-link">
+        <button @click="openModal('privacy')" class="legal-link">
           {{ t.privacyPolicy }}
         </button>
       </div>
@@ -51,11 +51,11 @@
       <p>© {{ currentYear }} {{ appConfig.company.name }} – Cosmic Run</p>
       
       <!-- Impressum Modal -->
-      <div v-if="showImpressum" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4" @click.self="showImpressum = false">
-        <div class="bg-zinc-900 border border-accent/50 p-6 rounded-lg max-w-2xl max-h-[80vh] overflow-y-auto">
+      <div v-if="showImpressum" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4" @click.self="closeModal('impressum')">
+        <div class="bg-zinc-900 border border-accent/50 p-6 rounded-lg max-w-2xl max-h-[80vh] overflow-y-auto" :style="modalPosition">
           <div class="flex justify-between items-center mb-4">
             <h2 class="text-xl text-accent font-bold">{{ t.impressum }}</h2>
-            <button @click="showImpressum = false" class="text-gray-400 hover:text-white" aria-label="Close">
+            <button @click="closeModal('impressum')" class="text-gray-400 hover:text-white" aria-label="Close">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
@@ -97,11 +97,11 @@
       </div>
       
       <!-- Privacy Policy Modal -->
-      <div v-if="showPrivacyPolicy" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4" @click.self="showPrivacyPolicy = false">
-        <div class="bg-zinc-900 border border-accent/50 p-6 rounded-lg max-w-2xl max-h-[80vh] overflow-y-auto">
+      <div v-if="showPrivacyPolicy" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4" @click.self="closeModal('privacy')">
+        <div class="bg-zinc-900 border border-accent/50 p-6 rounded-lg max-w-2xl max-h-[80vh] overflow-y-auto" :style="modalPosition">
           <div class="flex justify-between items-center mb-4">
             <h2 class="text-xl text-accent font-bold">{{ t.privacyPolicy }}</h2>
-            <button @click="showPrivacyPolicy = false" class="text-gray-400 hover:text-white" aria-label="Close">
+            <button @click="closeModal('privacy')" class="text-gray-400 hover:text-white" aria-label="Close">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
@@ -153,9 +153,43 @@ const t = inject('t')
 // Get current year for copyright
 const currentYear = computed(() => new Date().getFullYear())
 
-// Modal states
+// Modal states and position
 const showImpressum = ref(false)
 const showPrivacyPolicy = ref(false)
+const modalPosition = ref({ top: 0 })
+
+// Function to show modals at current scroll position
+const openModal = (modalType) => {
+  // Get current scroll position
+  const scrollTop = window.scrollY || document.documentElement.scrollTop
+  
+  // Set modal position to current scroll + a small offset to ensure visibility
+  modalPosition.value = {
+    top: `${Math.max(10, scrollTop - 50)}px`
+  }
+  
+  // Show the requested modal
+  if (modalType === 'impressum') {
+    showImpressum.value = true
+  } else if (modalType === 'privacy') {
+    showPrivacyPolicy.value = true
+  }
+  
+  // Prevent body scrolling while modal is open
+  document.body.style.overflow = 'hidden'
+}
+
+// Function to close modals
+const closeModal = (modalType) => {
+  if (modalType === 'impressum') {
+    showImpressum.value = false
+  } else if (modalType === 'privacy') {
+    showPrivacyPolicy.value = false
+  }
+  
+  // Restore body scrolling
+  document.body.style.overflow = ''
+}
 </script>
 
 <style scoped>
@@ -226,5 +260,35 @@ const showPrivacyPolicy = ref(false)
     width: 24px;
     height: 24px;
   }
+}
+
+/* Modal positioning for better mobile visibility */
+.fixed.inset-0 {
+  align-items: flex-start;
+}
+
+.fixed.inset-0 > div {
+  margin-left: auto;
+  margin-right: auto;
+  width: calc(100% - 2rem);
+  max-height: 80vh;
+  position: relative;
+  margin-top: 1rem;
+}
+
+/* Add a subtle animation when modals appear */
+@keyframes modal-appear {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fixed.inset-0 > div {
+  animation: modal-appear 0.3s ease-out forwards;
 }
 </style>
