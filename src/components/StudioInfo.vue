@@ -1,25 +1,16 @@
 <template>
-    <details class="mt-10 border border-gray-700 rounded p-4 bg-gray-900">
-      <summary class="cursor-pointer font-semibold text-lg text-pink-500">
+    <div class="mt-10">
+      <h2 class="font-semibold text-lg text-pink-500 mb-2">
         {{ t.aboutStudio }}
-      </summary>
+      </h2>
   
-      <p class="mt-3 text-gray-300 leading-relaxed">
+      <p class="text-gray-300 leading-relaxed">
         {{ t.studioDesc }}
       </p>
-    </details>
+    </div>
   </template>
   
   <script setup>
   import { inject } from 'vue'
   const t = inject('t')
   </script>
-  
-  <style scoped>
-  details summary {
-    list-style: none;
-  }
-  details summary::-webkit-details-marker {
-    display: none;
-  }
-  </style>

@@ -2,17 +2,80 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" href="/imgh/logo_cosmicrun.png">
+    
+    <!-- Favicon code -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#d53f8c">
+    <meta name="msapplication-TileColor" content="#d53f8c">
+    <meta name="theme-color" content="#000000">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Resource Hints - Preload critical assets -->
+    <link rel="preload" href="/imgh/cover.jpg" as="image" fetchpriority="high">
+    
+    <!-- Enhanced SEO Meta Tags -->
     <meta name="description" content="Wishlist Cosmic Run – a fast-paced, comic-style space roguelite – on Steam. Developed by Zinktank Labs." />
+    <meta name="keywords" content="cosmic run, space game, roguelite, indie game, steam game, zinktank labs" />
+    <meta name="author" content="Zinktank Labs" />
+    <meta name="robots" content="index, follow" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
     <meta property="og:title" content="Cosmic Run – Wishlist Now on Steam" />
     <meta property="og:description" content="A chaotic, stylish space roguelite by Zinktank Labs. Add to your Steam wishlist today!" />
-    <meta property="og:image" content="/imgh/screenshot1.png" />
+    <meta property="og:image" content="https://cosmicrun.zinktanklabs.com/imgh/screenshot1.webp" />
     <meta property="og:url" content="https://cosmicrun.zinktanklabs.com" />
+    <meta property="og:site_name" content="Cosmic Run" />
+    <!-- Add alt text for OG image -->
+    <meta property="og:image:alt" content="Cosmic Run game screenshot showing gameplay" />
+    
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <title>Cosmic Run</title>
+    <meta name="twitter:site" content="@cosmicrungame" />
+    <meta name="twitter:title" content="Cosmic Run – Wishlist Now on Steam" />
+    <meta name="twitter:description" content="A chaotic, stylish space roguelite by Zinktank Labs. Add to your Steam wishlist today!" />
+    <meta name="twitter:image" content="https://cosmicrun.zinktanklabs.com/imgh/screenshot1.webp" />
+    <!-- Add alt text for Twitter image -->
+    <meta name="twitter:image:alt" content="Cosmic Run game screenshot showing gameplay" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://cosmicrun.zinktanklabs.com" />
+    
+    <!-- Google Analytics with Consent Mode -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-355558690"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      // Default consent to 'denied' - will be updated based on user choice
+      gtag('consent', 'default', {
+        'analytics_storage': 'denied'
+      });
+      
+      // Check if user has already made a cookie choice
+      const cookieConsent = localStorage.getItem('cookie-consent');
+      if (cookieConsent === 'accepted') {
+        gtag('consent', 'update', {
+          'analytics_storage': 'granted'
+        });
+      }
+      
+      // Configure analytics
+      gtag('config', 'G-355558690', {
+        anonymize_ip: true
+      });
+    </script>
+    
+    <title>Cosmic Run - Fast-Paced Space Roguelite | Zinktank Labs</title>
   </head>
   <body class="bg-zinc-950 text-white font-mono">
+    <!-- Skip to content link for keyboard users -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-pink-600 focus:text-white focus:rounded">Skip to main content</a>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
   </body>

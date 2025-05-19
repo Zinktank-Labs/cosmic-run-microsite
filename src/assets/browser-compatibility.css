@@ -1,0 +1,52 @@
+/* Browser Compatibility CSS */
+
+/* Fix for flexbox gap in Safari */
+@supports not (gap: 1rem) {
+  .flex {
+    margin: -0.5rem;
+  }
+  .flex > * {
+    margin: 0.5rem;
+  }
+}
+
+/* Fix for smooth scrolling in Firefox */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Fix for certain iOS Safari bugs */
+input,
+textarea,
+button,
+select {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+/* Fix WebKit and Blink rendering issues */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fix for IE11 (for those who still need it) */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .flex {
+    display: -ms-flexbox;
+  }
+  .items-center {
+    -ms-flex-align: center;
+  }
+  .justify-center {
+    -ms-flex-pack: center;
+  }
+}
+
+/* Fix for object-fit in older Edge/IE */
+.img-cover {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  font-family: "object-fit: cover"; /* polyfill */
+}

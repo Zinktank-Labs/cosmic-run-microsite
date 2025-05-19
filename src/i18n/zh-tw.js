@@ -1,7 +1,7 @@
 export default {
   // Header component
   wishlist: '立即在 Steam 上加入願望清單',
-  comingSoon: '即將推出',
+  comingSoon: '2025年末推出',
   shareX: '在X上分享',
   shareFacebook: '在Facebook上分享',
   email: '电子邮件',
@@ -39,4 +39,48 @@ export default {
   // HeroShot
   heroAlt: 'Cosmic Run 遊戲封面',
   heroTagline: '節奏快速、混亂刺激的太空肉鴨式遊戲，充滿古怪幽默和無盡升級。',
+  
+  // Legal texts - Basic
+  impressum: '公司資訊',
+  privacyPolicy: '隱私權政策',
+  cookieConsent: '我們使用cookie來提升您的體驗並分析網站流量。',
+  acceptCookies: '接受',
+  rejectCookies: '拒絕',
+  
+  // Legal texts - Contact info
+  contact: '聯繫方式',
+  email: '電子郵件',
+  phone: '電話',
+  
+  // Legal texts - Company info
+  management: '管理團隊',
+  registration: '商業註冊',
+  commercialRegister: '商業登記處',
+  registrationNumber: '註冊號碼',
+  vatId: '增值稅號',
+  contentResponsible: '內容負責人 (依據 § 55 Abs. 2 RStV)',
+  
+  // Legal texts - Privacy Policy sections
+  privacyPolicyIntro: '本隱私權政策說明當您訪問我們的網站時，我們如何收集、使用和保護您的個人資料。',
+  dataCollection: '資料收集',
+  dataCollectionIntro: '我們收集以下資料：',
+  dataCollectionVoluntary: '您自願提供的資訊（例如：當您聯繫我們時）',
+  dataCollectionAuto: '自動收集的資料（IP地址、瀏覽器類型、裝置資訊）',
+  dataCollectionCookies: 'Cookie及類似技術',
+  
+  googleAnalytics: 'Google Analytics',
+  googleAnalyticsIntro: '本網站使用Google Analytics分析網站流量。Google Analytics使用cookie收集有關訪客如何使用我們網站的資訊。這些資訊會傳輸到美國的Google伺服器並儲存在那裡。',
+  googleAnalyticsAnonymization: '我們已啟用IP匿名化，因此您的IP地址在傳輸給Google之前會被截斷。Google會使用這些資訊來評估您對網站的使用情況，編制關於網站活動的報告，並提供其他與網站活動和互聯網使用相關的服務。',
+  googleAnalyticsOptOut: '您可以通過調整瀏覽器設定來防止cookie的儲存。您還可以下載並安裝以下鏈接提供的瀏覽器插件，以防止cookie生成的數據被收集：',
+  
+  yourRights: '您的權利',
+  yourRightsIntro: '根據GDPR，您擁有以下權利：',
+  rightAccess: '訪問您的個人資料',
+  rightRectify: '修正不准確的個人資料',
+  rightDelete: '要求刪除您的個人資料',
+  rightObject: '反對處理您的個人資料',
+  rightPortability: '資料可攜性',
+  rightWithdraw: '撤回同意',
+  
+  privacyContact: '如果您對本隱私權政策有任何疑問，請聯繫我們：'
 }

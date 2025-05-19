@@ -1,0 +1,10 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://cosmicrun.zinktanklabs.com/sitemap.xml
+
+# Disallow specific areas that don't need indexing
+Disallow: /assets/js/
+Disallow: /assets/css/
