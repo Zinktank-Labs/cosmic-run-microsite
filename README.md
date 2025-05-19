@@ -31,6 +31,30 @@ npm run analyze
 node scripts/optimize-images.js
 ```
 
+## Deployment
+
+### GitHub Pages Deployment (Automated)
+
+This project is configured for automatic deployment to GitHub Pages using GitHub Actions:
+
+1. Push changes to the `main` branch
+2. GitHub Actions will automatically build and deploy the website
+3. The deployed site will be available at https://zinktank-labs.github.io/cosmic-run-microsite/
+
+To configure a custom domain:
+1. Update the `CNAME` file in the `public` folder with your domain
+2. Configure your DNS settings to point to GitHub Pages
+3. Enable the custom domain in your GitHub repository settings
+
+### FTP Deployment (Manual)
+
+After building the project, upload the entire `dist` folder to your web server:
+
+1. Run `npm run build` to generate the production files
+2. Using an FTP client, upload all files from the `dist` folder to your server
+3. Ensure the .htaccess file is properly uploaded (some FTP clients hide files starting with a dot)
+4. Test your site to ensure all resources load correctly
+
 ## Items Needing Updates
 
 ### Pre-Production Checklist
@@ -71,14 +95,5 @@ The site includes several optimizations for production deployment:
 ### Server Configuration
 - **Apache Settings**: .htaccess with performance and security optimizations
 - **Security Headers**: Content Security Policy and other security headers
-
-## FTP Deployment
-
-After building the project, upload the entire `dist` folder to your web server:
-
-1. Run `npm run build` to generate the production files
-2. Using an FTP client, upload all files from the `dist` folder to your server
-3. Ensure the .htaccess file is properly uploaded (some FTP clients hide files starting with a dot)
-4. Test your site to ensure all resources load correctly
 
 This website is maintained by Zinktank Labs.

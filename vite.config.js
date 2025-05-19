@@ -65,8 +65,9 @@ export default defineConfig(({ command, mode }) => {
       }),
     ].filter(Boolean),
     
-    // Keep using absolute paths for better compatibility
-    base: '/',
+    // Update base path for GitHub Pages
+    // Use '/' for custom domain or organization/user page, or '/cosmic-run-microsite/' for project page
+    base: process.env.GITHUB_PAGES === 'true' ? '/cosmic-run-microsite/' : '/',
       
     build: {
       // Output directory
