@@ -68,11 +68,10 @@ export default {
     tiktok: 'https://tiktok.com/@cosmicrungame',
     reddit: 'https://reddit.com/user/CosmicRunGame/'
   },
-  
-  // Website information
+    // Website information
   website: {
     companyDomain: 'zinktanklabs.com',
-    productDomain: 'cosmicrun.zinktanklabs.com',
+    productDomain: 'zinktanklabs.com', // Updated to match the CNAME change
     protocol: 'https',
     get companyUrl() { return `${this.protocol}://${this.companyDomain}`; },
     get productUrl() { return `${this.protocol}://${this.productDomain}`; },
