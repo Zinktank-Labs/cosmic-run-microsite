@@ -62,7 +62,7 @@ export default {
   
   // Social media profiles
   social: {
-    bluesky: 'https://sky.app/profile/cosmicrungame.bsky.social',
+    bluesky: 'https://bsky.app/profile/cosmicrungame.bsky.social',
     twitter: 'https://x.com/cosmicrungame',
     instagram: 'https://instagram.com/cosmicrungame/',
     tiktok: 'https://tiktok.com/@cosmicrungame',
