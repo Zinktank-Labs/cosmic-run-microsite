@@ -13,10 +13,10 @@ function setupMetaTags() {
   
   // Update Open Graph URLs
   document.querySelector('meta[property="og:url"]').setAttribute('content', baseUrl);
-  document.querySelector('meta[property="og:image"]').setAttribute('content', `${baseUrl}/imgh/screenshot1.webp`);
+  document.querySelector('meta[property="og:image"]').setAttribute('content', `/imgh/screenshot1.webp`);
   
   // Update Twitter image URL
-  document.querySelector('meta[name="twitter:image"]').setAttribute('content', `${baseUrl}/imgh/screenshot1.webp`);
+  document.querySelector('meta[name="twitter:image"]').setAttribute('content', `/imgh/screenshot1.webp`);
   
   // Update canonical link
   document.querySelector('#canonical-link').setAttribute('href', baseUrl);

@@ -85,9 +85,8 @@ export default {
       privacy: `privacy@${this.website.companyDomain}`,
     };
   },
-  
   // Analytics
   analytics: {
-    googleAnalyticsId: 'G-355558690'
+    googleAnalyticsId: 'G-DXLDXJBJJX'
   }
 };

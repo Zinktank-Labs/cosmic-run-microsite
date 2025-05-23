@@ -64,10 +64,9 @@ export default defineConfig(({ command, mode }) => {
         filename: 'dist/stats.html',
       }),
     ].filter(Boolean),
-    
-    // Update base path for GitHub Pages
-    // Use '/' for custom domain or organization/user page, or '/cosmic-run-microsite/' for project page
-    base: process.env.GITHUB_PAGES === 'true' ? '/cosmic-run-microsite/' : '/',
+      // Always use root path for custom domain
+    // The site is now hosted at the root domain (zinktanklabs.com) rather than a subdirectory
+    base: '/',
       
     build: {
       // Output directory
