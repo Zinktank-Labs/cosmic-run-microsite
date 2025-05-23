@@ -106,9 +106,9 @@ if (fs.existsSync(jsDir)) {
 }
 
 // Check for broken or incorrect Google Analytics ID
-if (indexContent.includes('G-355558690')) {
-  console.warn('⚠️ Warning: index.html contains an incorrect Google Analytics ID (G-355558690).');
-  console.log('   The correct ID should be G-3555586900.');
+if (!indexContent.includes('G-DXLDXJBJJX')) {
+  console.warn('⚠️ Warning: index.html does not contain the correct Google Analytics ID (G-DXLDXJBJJX).');
+  console.log('   Please update your Google Analytics ID.');
 }
 
 // Check for references to github.io domain
