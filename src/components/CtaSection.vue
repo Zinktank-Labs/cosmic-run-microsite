@@ -6,7 +6,7 @@
       
       <!-- Main CTA button with hover effect -->
       <a
-        href="#"
+        href="https://store.steampowered.com/app/3770700"
         target="_blank"
         class="cta-button relative inline-block px-8 py-4 bg-gradient-to-r from-accent to-accent-darker text-white font-bold rounded-lg shadow-lg overflow-hidden"
         aria-label="Add to your Steam wishlist"
